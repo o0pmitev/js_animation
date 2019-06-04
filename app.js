@@ -1,27 +1,31 @@
-var ol = 0;
-var isPlaying = false;
-var circleInterval;
-function circleAnimation(time) {
-  ol++;
-  document.getElementById("circle").style.left = ol + "px";
-  circleInterval = requestAnimationFrame(circleAnimation);
+var canvas = document.getElementById('animated-canvas');
+var context = canvas.getContext('2d');
+var canvasInterval = requestAnimationFrame(canvasAnimation);
+var circleX = 60;
+var velocity = 1;
+var acceleration = 0.5;
+
+function canvasAnimation() {
+  circleX++;
+  drawCircle(circleX, canvas.height/2, 25);
+  canvasInterval = requestAnimationFrame(canvasAnimation);
 }
 
-function mouseClicked() {
-  if (isPlaying) {
-    isPlaying = false;
-    document.getElementById("circle").style.backgroundColor = "dimgrey";
-    document.getElementById("circle").style.borderRadius = "";
-    cancelAnimationFrame(circleInterval);    
-  } else {
-    isPlaying = true;
-    document.getElementById("circle").style.backgroundColor = "green";    
-    document.getElementById("circle").style.borderRadius = "0";
-    circleInterval = requestAnimationFrame(circleAnimation);
+function drawCircle(x, y, s) {
+  clearCanvas();
+  context.fillStyle = "red";
+  context.beginPath();
+  context.arc(x, y, s, 0, 2 * Math.PI);
+  context.fill();
+  velocity += acceleration;
+  circleX += velocity;
+  if(circleX > canvas.width) {
+    circleX = 0;
+    velocity = 1;
   }
 }
 
-
-document.getElementById("circle").addEventListener("click", mouseClicked);
-document.getElementById("circle").style.backgroundColor = "dimgrey";
-
+function clearCanvas() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+drawCircle();
