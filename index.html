@@ -1,17 +1,25 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>JavaScript Animation</title>
-    <link rel="stylesheet" href="app.css">   
-  </head>
-  <body>
-    <div id="web-animation"></div>
-    <script src="app.js"></script>
 
-    <button onclick="rotatingSquare.play()" type="button">Play</button>
-    <button onclick="rotatingSquare.pause()" type="button">Pause</button>
-    <button onclick="rotatingSquare.playbackRate+=0.2" type="button">Speed</button>
-    <button onclick="rotatingSquare.playbackRate-=0.2" type="button">Slow</button>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Animation</title>
+  <link rel="stylesheet" href="app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap" rel="stylesheet">
+  <script src="app.js" defer></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1></h1>
+    <div id="web-animation"></div>
+    <div class="button-container">
+      <button onclick="rotatingSquare.play()" type="button">Play</button>
+      <button onclick="rotatingSquare.pause()" type="button">Pause</button>
+      <button onclick="rotatingSquare.playbackRate+=0.2" type="button">Speed</button>
+      <button onclick="rotatingSquare.playbackRate-=0.2" type="button">Slow</button>
+    </div>
+  </div>
+</body>
 </html>
